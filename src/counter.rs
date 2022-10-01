@@ -40,7 +40,7 @@ impl Component for Counter {
 						selectable=true
 						selected=true
 						title={title}
-						>
+					>
 					<Form>
 						<FormGroup label="Search">
 							<TextInput icon={TextInputIcon::Search}/>
