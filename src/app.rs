@@ -189,17 +189,33 @@ impl Model {
     }
 
     fn page(html: Html) -> Html {
+		let title = html! {<>
+            {"Draggable"}
+        </>};
         let sidebar = html_nested! {
             <PageSidebar>
-				<Title level={Level::H2}>{"Form Validation"}</Title>
-					<div draggable="true" class="resizable" text = "some id">
-					<p>{"Something dragable"}</p>
-				</div>
-				<Form>
-					<FormGroup label="Search">
-						<TextInput icon={TextInputIcon::Search}/>
-					</FormGroup>
-				</Form>
+				<Title level={Level::H2}>{""}
+					<p style = "color: white;">{"Top X Senders"}
+					<AppLauncher>
+						<AppLauncherItem>
+							<div draggable="true" class="resizable" text = "some id">
+								<p>{"Top Sender"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+						<AppLauncherItem>
+							<div draggable="true" class="resizable" text = "some id">
+								<p>{"Top 2 Senders"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+						<AppLauncherItem>
+							{"Top 5 Sender"}
+						</AppLauncherItem>
+						<Divider/>
+					</AppLauncher>
+					</p>
+				</Title>
 				<Nav>
 					<NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
 					//<NavItem external=true to={AppRoute::FullPageExample(FullPage::Login)}>{"PatternFly Yew"}</NavItem>
@@ -249,7 +265,7 @@ impl Model {
         };
 
         let logo = html_nested! {
-            <Logo src="./2MPlus_Logo.svg" alt="Logo" />
+            <Logo src="2MPlus_Logo.svg" alt="Logo" />
         };
 
         html! {
