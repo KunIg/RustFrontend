@@ -195,7 +195,7 @@ impl Model {
         let sidebar = html_nested! {
             <PageSidebar>
 				<Title level={Level::H2}>{""}
-					<p style = "color: white;">{"Top X Senders"}
+					<p style = "color: white; margin-left: auto;">{"Top X Senders"}
 					<AppLauncher>
 						<AppLauncherItem>
 							<div draggable="true" class="resizable" text = "some id">
@@ -216,6 +216,121 @@ impl Model {
 					</AppLauncher>
 					</p>
 				</Title>
+
+				<Title level={Level::H2}>{""}
+				<p style = "color: white; margin-left: auto;">{"Top X Senders"}
+				<AppLauncher>
+					<AppLauncherItem>
+						<div draggable="true" class="resizable" text = "some id">
+							<p>{"Top Sender"}</p>
+						</div>
+					</AppLauncherItem>
+					<Divider/>
+					<AppLauncherItem>
+						<div draggable="true" class="resizable" text = "some id">
+							<p>{"Top 2 Senders"}</p>
+						</div>
+					</AppLauncherItem>
+					<Divider/>
+					<AppLauncherItem>
+						{"Top 5 Sender"}
+					</AppLauncherItem>
+					<Divider/>
+				</AppLauncher>
+				</p>
+			</Title>
+
+			<Title level={Level::H2}>{""}
+			<p style = "color: white; margin-left: auto;">{"Top X Senders"}
+			<AppLauncher>
+				<AppLauncherItem>
+					<div draggable="true" class="resizable" text = "some id">
+						<p>{"Top Sender"}</p>
+					</div>
+				</AppLauncherItem>
+				<Divider/>
+				<AppLauncherItem>
+					<div draggable="true" class="resizable" text = "some id">
+						<p>{"Top 2 Senders"}</p>
+					</div>
+				</AppLauncherItem>
+				<Divider/>
+				<AppLauncherItem>
+					{"Top 5 Sender"}
+				</AppLauncherItem>
+				<Divider/>
+			</AppLauncher>
+			</p>
+		</Title>
+
+		<Title level={Level::H2}>{""}
+		<p style = "color: white; margin-left: auto;">{"Top X Senders"}
+		<AppLauncher>
+			<AppLauncherItem>
+				<div draggable="true" class="resizable" text = "some id">
+					<p>{"Top Sender"}</p>
+				</div>
+			</AppLauncherItem>
+			<Divider/>
+			<AppLauncherItem>
+				<div draggable="true" class="resizable" text = "some id">
+					<p>{"Top 2 Senders"}</p>
+				</div>
+			</AppLauncherItem>
+			<Divider/>
+			<AppLauncherItem>
+				{"Top 5 Sender"}
+			</AppLauncherItem>
+			<Divider/>
+		</AppLauncher>
+		</p>
+	</Title>
+
+	<Title level={Level::H2}>{""}
+	<p style = "color: white; margin-left: auto;">{"Top X Senders"}
+	<AppLauncher>
+		<AppLauncherItem>
+			<div draggable="true" class="resizable" text = "some id">
+				<p>{"Top Sender"}</p>
+			</div>
+		</AppLauncherItem>
+		<Divider/>
+		<AppLauncherItem>
+			<div draggable="true" class="resizable" text = "some id">
+				<p>{"Top 2 Senders"}</p>
+			</div>
+		</AppLauncherItem>
+		<Divider/>
+		<AppLauncherItem>
+			{"Top 5 Sender"}
+		</AppLauncherItem>
+		<Divider/>
+	</AppLauncher>
+	</p>
+</Title>
+
+<Title level={Level::H2}>{""}
+<p style = "color: white; margin-left: auto;">{"Top X Senders"}
+<AppLauncher>
+	<AppLauncherItem>
+		<div draggable="true" class="resizable" text = "some id">
+			<p>{"Top Sender"}</p>
+		</div>
+	</AppLauncherItem>
+	<Divider/>
+	<AppLauncherItem>
+		<div draggable="true" class="resizable" text = "some id">
+			<p>{"Top 2 Senders"}</p>
+		</div>
+	</AppLauncherItem>
+	<Divider/>
+	<AppLauncherItem>
+		{"Top 5 Sender"}
+	</AppLauncherItem>
+	<Divider/>
+</AppLauncher>
+</p>
+</Title>
 				<Nav>
 					<NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
 					//<NavItem external=true to={AppRoute::FullPageExample(FullPage::Login)}>{"PatternFly Yew"}</NavItem>
