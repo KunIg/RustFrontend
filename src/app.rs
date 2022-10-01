@@ -191,6 +191,20 @@ impl Model {
     fn page(html: Html) -> Html {
         let sidebar = html_nested! {
             <PageSidebar>
+				<Title level={Level::H2}>{"Form Validation"}</Title>
+					<div draggable="true" class="resizable" text = "some id">
+					<p>{"Something dragable"}</p>
+				</div>
+				<Form>
+					<FormGroup label="Search">
+						<TextInput icon={TextInputIcon::Search}/>
+					</FormGroup>
+				</Form>
+				<Nav>
+					<NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
+					//<NavItem external=true to={AppRoute::FullPageExample(FullPage::Login)}>{"PatternFly Yew"}</NavItem>
+				</Nav>
+				/*
                 <Nav>
                     <NavRouterExpandable<AppRoute> title="Basics">
                         <NavRouterItem<AppRoute> to={AppRoute::Index}>{"Index"}</NavRouterItem<AppRoute>>
@@ -230,11 +244,12 @@ impl Model {
                         <NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
                     </NavRouterExpandable<AppRoute>>
                 </Nav>
+				*/
             </PageSidebar>
         };
 
         let logo = html_nested! {
-            <Logo src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
+            <Logo src="./2MPlus_Logo.svg" alt="Logo" />
         };
 
         html! {
@@ -242,6 +257,7 @@ impl Model {
                 logo={logo}
                 sidebar={sidebar}
                 >
+				<Counter/>
                 { html }
             </Page>
         }

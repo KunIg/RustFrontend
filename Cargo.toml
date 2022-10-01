@@ -27,6 +27,17 @@ strum = "0.19"
 
 log = "0.4"
 
+web-sys = {version = "0.3.56", features = [
+  "DataTransfer",
+  "DataTransferItemList",
+  "DataTransferItem",
+  "Document",
+  "Element",
+  "HtmlImageElement",
+  "Url",
+  'Blob'
+]}
+
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
 #patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "ad0b2730402c004cd6e10ec6c52a2a0da2e13310" } # FIXME: awaiting release

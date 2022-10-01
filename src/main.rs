@@ -7,6 +7,7 @@ mod example;
 mod full;
 mod index;
 mod layouts;
+mod queries;
 
 use log::Level;
 use wasm_bindgen::prelude::*;

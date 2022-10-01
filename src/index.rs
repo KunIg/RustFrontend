@@ -6,7 +6,7 @@ use yew::prelude::*;
 pub fn index() -> Html {
     html! {
         <>
-            <ExamplePage title="Patternfly Yew Quickstart">
+            <ExamplePage title="2Mplus">
                 {"Pick an example on the left"}
             </ExamplePage>
         </>

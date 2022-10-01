@@ -2,7 +2,6 @@ use crate::example::ExamplePage;
 
 use patternfly_yew::*;
 use yew::prelude::*;
-use crate::queries::*;
 
 pub struct Counter {
     value: i64,
@@ -35,19 +34,22 @@ impl Component for Counter {
         </>};
         html! {
             <>
+                <ExamplePage title="Counting clicks">
                     <Gallery gutter=true>
                         <Card
                             selectable=true
                             selected=true
                             title={title}
                             >
-						<TableExample/>
-							<Form>
-							<Button label="Add One" align={Align::Start} icon={Icon::PlusCircleIcon} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AddOne)}/>
-							</Form>
+
+                            <p>{ self.value }</p>
 
                         </Card>
                     </Gallery>
+                    <Form>
+                        <Button label="Add One" align={Align::Start} icon={Icon::PlusCircleIcon} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AddOne)}/>
+                    </Form>
+                </ExamplePage>
             </>
         }
     }
