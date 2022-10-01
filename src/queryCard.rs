@@ -1,11 +1,9 @@
-use crate::example::ExamplePage;
-
 use patternfly_yew::*;
 use yew::prelude::*;
 use crate::queries::*;
 
 pub struct QueryCard {
-    value: i64,
+    table: Option<TableExample>,
 }
 
 #[derive(Clone, Debug)]
@@ -18,14 +16,14 @@ impl Component for QueryCard {
     type Properties = ();
 
     fn create(_: &Context<Self>) -> Self {
-        Self { value: 0 }
+        Self { table: None }
     }
 
     fn update(&mut self, _: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
-            Msg::AddOne => self.value += 1,
+            Msg::AddOne => self.table = None,
         }
-        log::info!("Clicks: {}", self.value);
+        //log::info!("Clicks: {}", self.value);
         true
     }
 
@@ -41,6 +39,7 @@ impl Component for QueryCard {
 						selected=true
 						title={title}
 					>
+					<div></div>
 					<Form>
 						<FormGroup label="Search">
 							<TextInput icon={TextInputIcon::Search}/>

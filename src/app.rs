@@ -3,6 +3,8 @@ use crate::queryCard::*;
 use crate::full;
 use crate::index::*;
 use crate::layouts;
+use web_sys::{HtmlDivElement};
+use wasm_bindgen::JsCast;
 
 use patternfly_yew::*;
 
@@ -189,28 +191,73 @@ impl Model {
     }
 
     fn page(html: Html) -> Html {
-		let title = html! {<>
-            {"Draggable"}
-        </>};
+
+		let drag = Callback::from(move |event: DragEvent| {
+			event.data_transfer().unwrap()
+			.set_data("text", &*event.target().unwrap().unchecked_into::<HtmlDivElement>().id());  
+		});
+
         let sidebar = html_nested! {
             <PageSidebar>
+				<Nav>
+					<NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
+					//<NavItem external=true to={AppRoute::FullPageExample(FullPage::Login)}>{"PatternFly Yew"}</NavItem>
+				</Nav>
+				<Title level={Level::H1}>{""}
+					<h1 style="color: white; margin: 14px; padding-left: 10px;">{"Time Range"}</h1>
+				</Title>
 				<Title level={Level::H2}>{""}
-					<p style = "color: white; margin-left: auto;">{"Top X Senders"}
+					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Time - X Days"}
 					<AppLauncher>
 						<AppLauncherItem>
-							<div draggable="true" class="resizable" text = "some id">
-								<p>{"Top Sender"}</p>
+							<div id = "24 Hours" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"24 Hours"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							<div draggable="true" class="resizable" text = "some id">
-								<p>{"Top 2 Senders"}</p>
+							<div id = "30 Days" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"30 Days"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							{"Top 5 Sender"}
+							<div id = "180 Days" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"180 Days"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+						<AppLauncherItem>
+							<div id = "Custom" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"Custom"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+					</AppLauncher>
+					</p>
+				</Title>
+				<Title level={Level::H1}>{""}
+					<h1 style="color: white; margin: 14px; padding-left: 10px;">{"Address Queries"}</h1>
+				</Title>
+				<Title level={Level::H2}>{""}
+					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Top X Senders"}
+					<AppLauncher>
+						<AppLauncherItem>
+							<div id = "Top 5" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"Top 5"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+						<AppLauncherItem>
+							<div id = "Top 10" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"Top 10"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+						<AppLauncherItem>
+							<div id = "Top 20" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"Top 20"}</p>
+							</div>
 						</AppLauncherItem>
 						<Divider/>
 					</AppLauncher>
@@ -218,123 +265,46 @@ impl Model {
 				</Title>
 
 				<Title level={Level::H2}>{""}
-				<p style = "color: white; margin-left: auto;">{"Top X Senders"}
-				<AppLauncher>
-					<AppLauncherItem>
-						<div draggable="true" class="resizable" text = "some id">
-							<p>{"Top Sender"}</p>
-						</div>
-					</AppLauncherItem>
-					<Divider/>
-					<AppLauncherItem>
-						<div draggable="true" class="resizable" text = "some id">
-							<p>{"Top 2 Senders"}</p>
-						</div>
-					</AppLauncherItem>
-					<Divider/>
-					<AppLauncherItem>
-						{"Top 5 Sender"}
-					</AppLauncherItem>
-					<Divider/>
-				</AppLauncher>
-				</p>
-			</Title>
-
-			<Title level={Level::H2}>{""}
-			<p style = "color: white; margin-left: auto;">{"Top X Senders"}
-			<AppLauncher>
-				<AppLauncherItem>
-					<div draggable="true" class="resizable" text = "some id">
-						<p>{"Top Sender"}</p>
+					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Top Y Receivers"}
+					<AppLauncher>
+						<AppLauncherItem>
+							<div id = "Top 5" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"Top 5"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+						<AppLauncherItem>
+							<div id = "Top 10" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"Top 10"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+						<AppLauncherItem>
+							<div id = "Top 20" draggable="true" class="resizable" ondragstart={drag.clone()}>
+								<p>{"Top 20"}</p>
+							</div>
+						</AppLauncherItem>
+						<Divider/>
+					</AppLauncher>
+					</p>
+				</Title>
+				
+				<Title level={Level::H2}>{""}
+					<div id = "Total Fees Generated" draggable="true" class="resizable" ondragstart={drag.clone()}>
+						<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Total Fees Generated"}</p>
 					</div>
-				</AppLauncherItem>
-				<Divider/>
-				<AppLauncherItem>
-					<div draggable="true" class="resizable" text = "some id">
-						<p>{"Top 2 Senders"}</p>
+				</Title>
+
+				<Title level={Level::H2}>{""}
+					<div id = "Total Transactions" draggable="true" class="resizable" ondragstart={drag.clone()}>
+						<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Total Transactions"}</p>
 					</div>
-				</AppLauncherItem>
-				<Divider/>
-				<AppLauncherItem>
-					{"Top 5 Sender"}
-				</AppLauncherItem>
-				<Divider/>
-			</AppLauncher>
-			</p>
-		</Title>
-
-		<Title level={Level::H2}>{""}
-		<p style = "color: white; margin-left: auto;">{"Top X Senders"}
-		<AppLauncher>
-			<AppLauncherItem>
-				<div draggable="true" class="resizable" text = "some id">
-					<p>{"Top Sender"}</p>
-				</div>
-			</AppLauncherItem>
-			<Divider/>
-			<AppLauncherItem>
-				<div draggable="true" class="resizable" text = "some id">
-					<p>{"Top 2 Senders"}</p>
-				</div>
-			</AppLauncherItem>
-			<Divider/>
-			<AppLauncherItem>
-				{"Top 5 Sender"}
-			</AppLauncherItem>
-			<Divider/>
-		</AppLauncher>
-		</p>
-	</Title>
-
-	<Title level={Level::H2}>{""}
-	<p style = "color: white; margin-left: auto;">{"Top X Senders"}
-	<AppLauncher>
-		<AppLauncherItem>
-			<div draggable="true" class="resizable" text = "some id">
-				<p>{"Top Sender"}</p>
-			</div>
-		</AppLauncherItem>
-		<Divider/>
-		<AppLauncherItem>
-			<div draggable="true" class="resizable" text = "some id">
-				<p>{"Top 2 Senders"}</p>
-			</div>
-		</AppLauncherItem>
-		<Divider/>
-		<AppLauncherItem>
-			{"Top 5 Sender"}
-		</AppLauncherItem>
-		<Divider/>
-	</AppLauncher>
-	</p>
-</Title>
-
-<Title level={Level::H2}>{""}
-<p style = "color: white; margin-left: auto;">{"Top X Senders"}
-<AppLauncher>
-	<AppLauncherItem>
-		<div draggable="true" class="resizable" text = "some id">
-			<p>{"Top Sender"}</p>
-		</div>
-	</AppLauncherItem>
-	<Divider/>
-	<AppLauncherItem>
-		<div draggable="true" class="resizable" text = "some id">
-			<p>{"Top 2 Senders"}</p>
-		</div>
-	</AppLauncherItem>
-	<Divider/>
-	<AppLauncherItem>
-		{"Top 5 Sender"}
-	</AppLauncherItem>
-	<Divider/>
-</AppLauncher>
-</p>
-</Title>
-				<Nav>
-					<NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
-					//<NavItem external=true to={AppRoute::FullPageExample(FullPage::Login)}>{"PatternFly Yew"}</NavItem>
-				</Nav>
+				</Title>
+				<Title level={Level::H2}>{""}
+					<div id = "Fund Allocator" draggable="true" class="resizable" ondragstart={drag.clone()}>
+						<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Fund Allocator"}</p>
+					</div>
+				</Title>					
 				/*
                 <Nav>
                     <NavRouterExpandable<AppRoute> title="Basics">

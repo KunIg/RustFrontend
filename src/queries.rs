@@ -1,9 +1,5 @@
-use crate::{example::ExamplePage, example2};
-
-use gloo_utils::document;
-use wasm_bindgen::JsCast;
-use web_sys::{Url};
-use web_sys::{DragEvent, HtmlImageElement};
+use gloo::console::log;
+use web_sys::{DragEvent};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -50,7 +46,7 @@ impl Component for TableExample {
     fn create(_: &Context<Self>) -> Self {
         let model = vec![
             ExampleEntry {
-                entry: " ".into(),
+                entry: "".into(),
             }
         ];
 
@@ -75,8 +71,9 @@ impl Component for TableExample {
             Msg::Dropped(event) => {
                 event.prevent_default();
                 let data_transfer = event.data_transfer().unwrap().get_data("text").unwrap();
+				log!(format!("{:#?}",&data_transfer));
                 self.model.push(ExampleEntry {
-					entry: format!("Extra entry: {}", data_transfer),
+					entry: format!("Extra entry: {}", format!("{:#?}",&data_transfer)),
 				})
             }
 		}
