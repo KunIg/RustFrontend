@@ -2,7 +2,7 @@
 
 mod app;
 mod components;
-mod counter;
+mod queryCard;
 mod example;
 mod full;
 mod index;

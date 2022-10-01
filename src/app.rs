@@ -1,5 +1,5 @@
 use crate::components;
-use crate::counter::*;
+use crate::queryCard::*;
 use crate::full;
 use crate::index::*;
 use crate::layouts;
@@ -86,8 +86,8 @@ pub enum AppRoute {
     FullPage(FullPage),
     #[to = "/layout{*:rest}"]
     Layout(Layout),
-    #[to = "/counter"]
-    Counter,
+    #[to = "/QueryCard"]
+    QueryCard,
     #[to = "/"]
     Index,
 }
@@ -117,7 +117,7 @@ impl yew::Component for Model {
 impl Model {
     fn switch_main() -> Render<AppRoute, ()> {
         Router::render(|switch: AppRoute| match switch {
-            AppRoute::Counter => Self::page(html! {<Counter/>}),
+            AppRoute::QueryCard => Self::page(html! {<QueryCard/>}),
             AppRoute::Index => Self::page(html! {<Index/>}),
 
             AppRoute::FullPageExample(FullPage::Login) => {
@@ -339,7 +339,7 @@ impl Model {
                 <Nav>
                     <NavRouterExpandable<AppRoute> title="Basics">
                         <NavRouterItem<AppRoute> to={AppRoute::Index}>{"Index"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Counter}>{"Counter"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::QueryCard}>{"QueryCard"}</NavRouterItem<AppRoute>>
                         <NavItem external=true to="https://github.com/ctron/patternfly-yew">{"PatternFly Yew"}</NavItem>
                     </NavRouterExpandable<AppRoute>>
                     <NavRouterExpandable<AppRoute> title="Components">
@@ -388,7 +388,7 @@ impl Model {
                 logo={logo}
                 sidebar={sidebar}
                 >
-				<Counter/>
+				<QueryCard/>
                 { html }
             </Page>
         }

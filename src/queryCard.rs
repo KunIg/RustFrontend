@@ -4,7 +4,7 @@ use patternfly_yew::*;
 use yew::prelude::*;
 use crate::queries::*;
 
-pub struct Counter {
+pub struct QueryCard {
     value: i64,
 }
 
@@ -13,7 +13,7 @@ pub enum Msg {
     AddOne,
 }
 
-impl Component for Counter {
+impl Component for QueryCard {
     type Message = Msg;
     type Properties = ();
 
@@ -47,7 +47,6 @@ impl Component for Counter {
 						</FormGroup>
 					</Form>
 					<TableExample/>
-
 					</Card>
 				</Gallery>
             </>
