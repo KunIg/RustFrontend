@@ -31,23 +31,25 @@ impl Component for Counter {
 
     fn view(&self, ctx: &Context<Self>) -> Html {
         let title = html! {<>
-            {"Clicks"}
+            {""}
         </>};
         html! {
             <>
-                    <Gallery gutter=true>
-                        <Card
-                            selectable=true
-                            selected=true
-                            title={title}
-                            >
-						<TableExample/>
-							<Form>
-							<Button label="Add One" align={Align::Start} icon={Icon::PlusCircleIcon} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AddOne)}/>
-							</Form>
+				<Gallery gutter=true>
+					<Card
+						selectable=true
+						selected=true
+						title={title}
+						>
+					<Form>
+						<FormGroup label="Search">
+							<TextInput icon={TextInputIcon::Search}/>
+						</FormGroup>
+					</Form>
+					<TableExample/>
 
-                        </Card>
-                    </Gallery>
+					</Card>
+				</Gallery>
             </>
         }
     }

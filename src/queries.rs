@@ -104,7 +104,6 @@ impl Component for TableExample {
 					ondrop={link.callback(|e| Msg::Dropped(e))}>
                 	<p>{ "drag queries here" }</p>
 				</div>
-				<div id="photos"></div>
             </>
         }
     }
