@@ -1,4 +1,6 @@
-# PatternFly quick start for Yew
+# DRAGDROP ANALYTICS
+
+## Lego like On Chain Visualisation.
 
 This is a prototype for a user friendly blockchain explorer which allows for a "lego" like experience of constructing of complex data queries.
 
