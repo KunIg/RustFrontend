@@ -1,7 +1,6 @@
 #![recursion_limit = "1024"]
 
 mod app;
-mod components;
 mod queryCard;
 mod example;
 mod full;

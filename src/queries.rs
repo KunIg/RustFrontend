@@ -18,18 +18,18 @@ pub struct ExampleEntry {
 impl TableRenderer for ExampleEntry {
     fn render(&self, column: ColumnIndex) -> Html {
         match column.index {
-            0 => html! {{&self.entry}},
+            0 => html! {<p style="text-color: black; text-align: center; background-color: white; border-radius: 6px;">{&self.entry}</p>},
             _ => html! {},
         }
     }
-
+	/*
     fn render_details(&self) -> Vec<Span> {
         vec![Span::max(html! {
             <>
                 { "So many details for " }{ &self.entry }
             </>
         })]
-    }
+    }*/
 }
 
 pub enum Msg {
@@ -73,7 +73,7 @@ impl Component for TableExample {
                 let data_transfer = event.data_transfer().unwrap().get_data("text").unwrap();
 				log!(format!("{:#?}",&data_transfer));
                 self.model.push(ExampleEntry {
-					entry: format!("Extra entry: {}", format!("{:#?}",&data_transfer)),
+					entry: format!("{}",&data_transfer),
 				})
             }
 		}
@@ -91,12 +91,12 @@ impl Component for TableExample {
         html! {
             <>
 				<Table<SharedTableModel<ExampleEntry>>
-					mode={TableMode::CompactExpandable}
+					mode={TableMode::CompactNoBorders}
 					header={header}
 					entries={self.model.clone()}
 				>
 				</Table<SharedTableModel<ExampleEntry>>>
-				<div class="drop-zone"
+				<div style = "border-width:3px; border-style:solid; border-color:#FF0000; text-align: center; border-radius: 6px;" class="drop-zone"
 					ondragover={link.callback(|e| Msg::Dragged(e))}
 					ondrop={link.callback(|e| Msg::Dropped(e))}>
                 	<p>{ "drag queries here" }</p>
