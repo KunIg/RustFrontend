@@ -1,12 +1,11 @@
 [package]
-name = "patternfly-yew-quickstart"
-version = "0.2.0"
-authors = ["Jens Reimann <jreimann@redhat.com>"]
+name = "DRAGDROP_ANALYTICS"
+version = "0.0.1"
 edition = "2018"
 license = "Apache-2.0"
 readme = "README.md"
-description = "A quickstart project for using PatternFly with Yew Stack"
-repository = "https://github.com/ctron/patternfly-yew-quickstart"
+description = "A prototype of a no/low code blockchain data analytics tool."
+repository = "https://github.com/KunIg/RustFrontend"
 
 #[lib]
 #crate-type = ["cdylib", "rlib"]
@@ -27,7 +26,6 @@ strum = "0.19"
 
 log = "0.4"
 
-#plotly = { version = "0.8.1", features = ["kaleido"] }
 
 web-sys = {version = "0.3.56", features = [
   "DataTransfer",

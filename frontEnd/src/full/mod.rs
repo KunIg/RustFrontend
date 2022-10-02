@@ -48,7 +48,7 @@ impl Component for FullPageExample {
 impl FullPageExample {
     fn open(&self, ctx: &Context<Self>) {
         gloo_utils::window()
-            .open_with_url_and_target(&ctx.props().url, "patternfly-yew-example")
+            .open_with_url_and_target(&ctx.props().url, "DRAGDROP_ANALYTICS")
             .ok();
     }
 }

@@ -3,6 +3,23 @@
 version = 3
 
 [[package]]
+name = "DRAGDROP_ANALYTICS"
+version = "0.0.1"
+dependencies = [
+ "chrono",
+ "gloo 0.8.0",
+ "gloo-utils",
+ "log",
+ "patternfly-yew",
+ "strum",
+ "wasm-bindgen",
+ "wasm-logger",
+ "web-sys",
+ "yew",
+ "yew-router-nested",
+]
+
+[[package]]
 name = "android_system_properties"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -473,23 +490,6 @@ dependencies = [
  "web-sys",
  "yew",
  "yew-agent",
- "yew-router-nested",
-]
-
-[[package]]
-name = "patternfly-yew-quickstart"
-version = "0.2.0"
-dependencies = [
- "chrono",
- "gloo 0.8.0",
- "gloo-utils",
- "log",
- "patternfly-yew",
- "strum",
- "wasm-bindgen",
- "wasm-logger",
- "web-sys",
- "yew",
  "yew-router-nested",
 ]
 
