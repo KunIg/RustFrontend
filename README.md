@@ -24,3 +24,4 @@ Developed with the Yew Rust framework. Because React is too easy. Will do it in 
 
 
 ![Blank diagram (1)](https://user-images.githubusercontent.com/33451439/193436465-65e161ed-e1d4-4a19-8779-a6db88007197.jpeg)
+![](https://github.com/RustFrontend/Rust_Frontend_Demo.gif)
