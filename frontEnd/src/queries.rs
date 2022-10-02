@@ -37,9 +37,15 @@ pub enum Msg {
 	Dropped(DragEvent),
 }
 
+#[derive(Clone, PartialEq, Properties)]
+pub struct Props {
+	#[prop_or_default]
+    pub instance: u32,
+}
+
 impl Component for TableExample {
     type Message = Msg;
-    type Properties = ();
+    type Properties = Props;
 
     fn create(_: &Context<Self>) -> Self {
         let model = vec![
@@ -91,6 +97,7 @@ impl Component for TableExample {
 		let title = html! {<>
             {""}
         </>};
+		let some_condition =  ctx.props().instance == 0;
         html! {
             <>
 				<Table<SharedTableModel<ExampleEntry>>
@@ -109,15 +116,28 @@ impl Component for TableExample {
 				toggle_by_onclick=true
 				target={target}
 				>
-				<div style="width:350%;">
-				<Card
-				selectable=true
-				selected=true
-				title={title}
-				>
-					<img width = "800" src="img/pricevsgasprice.png" alt="price"/>
-				</Card>
-				</div>
+
+				if some_condition {
+					<div style="width:350%;">
+						<Card
+						selectable=true
+						selected=true
+						title={title}
+						>
+							<img width = "800" src="img/pricevsgasprice.png" alt="price"/>
+						</Card>
+					</div>
+				} else {
+					<div style="width:300%;">
+						<Card
+						selectable=true
+						selected=true
+						title={title}
+						>
+							<img width = "800" src="img/senders_pie.png" alt="price"/>
+						</Card>
+					</div>
+				}
 				</Popover>
             </>
         }

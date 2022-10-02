@@ -18,9 +18,15 @@ pub enum Msg {
 	OnInput(InputEvent)
 }
 
+#[derive(Clone, PartialEq, Properties)]
+pub struct Props {
+	#[prop_or_default]
+    pub instance: u32,
+}
+
 impl Component for QueryCard {
     type Message = Msg;
-    type Properties = ();
+    type Properties = Props;
 
     fn create(_: &Context<Self>) -> Self {
         Self { table: None, SearchInput: true, SearchedTerm: "".to_owned() }
@@ -71,7 +77,7 @@ impl Component for QueryCard {
 					<p style="text-color: black; background-color: white; border-radius: 6px;">{"Query: "}</p>
 					<p style="text-color: black; background-color: white; border-radius: 6px;">{self.SearchedTerm.clone()}</p>
 				</div>
-				<TableExample/>
+				<TableExample instance={ctx.props().instance}/>
 				</Card>
         }
     }

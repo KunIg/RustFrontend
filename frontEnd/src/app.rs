@@ -164,13 +164,13 @@ impl yew::Component for Model {
 				<Flex>
 					<FlexItem>
 					<LayoutItem>
-						<QueryCard/>
+						<QueryCard instance={0}/>
 					</LayoutItem>
 					</FlexItem>
 					<FlexItem>
 					<LayoutItem>
 					<div hidden={self.not_rendered}>
-						<QueryCard/>
+						<QueryCard instance={1}/>
 					</div>
 					</LayoutItem>
 					</FlexItem>
