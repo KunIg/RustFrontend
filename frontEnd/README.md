@@ -1,8 +1,8 @@
-# PatternFly quick start for Yew
+# DRAGDROP ANALYTICS
 
-This is a quickstart template to get you started with PatternFly and Yew.
+## Lego like On Chain Visualisation.
 
-Here you can see this page in action: https://ctron.github.io/patternfly-yew-quickstart
+This is a prototype for a user friendly blockchain explorer which allows for a "lego" like experience of constructing of complex data queries.
 
 ## Pre-requisites
 
