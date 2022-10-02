@@ -35,8 +35,6 @@ impl TableRenderer for ExampleEntry {
 pub enum Msg {
 	Dragged(DragEvent),
 	Dropped(DragEvent),
-    Append,
-    Pop,
 }
 
 impl Component for TableExample {
@@ -57,13 +55,6 @@ impl Component for TableExample {
 
     fn update(&mut self, _: &Context<Self>, msg: Self::Message) -> bool {
 		match msg {
-			Msg::Append => self.model.push(ExampleEntry {
-                entry: format!("Extra entry: {}", Utc::now()),
-            }),
-            Msg::Pop => {
-                self.model.pop();
-            },
-
             Msg::Dragged(event) => {
                 event.prevent_default();
 				return false;
@@ -88,6 +79,16 @@ impl Component for TableExample {
 				<TableColumn label=""/>
 			</TableHeader>
 		};
+
+		let target = html!{
+			<div style = "float: right">
+			<Button
+			align={Align::End} 
+			icon={Icon::Play} 
+			variant={Variant::Link} 
+			/>
+			</div>
+		};
         html! {
             <>
 				<Table<SharedTableModel<ExampleEntry>>
@@ -101,13 +102,16 @@ impl Component for TableExample {
 					ondrop={link.callback(|e| Msg::Dropped(e))}>
                 	<p>{ "drag queries here" }</p>
 				</div>
-				<div style = "float: right">
-				<Button
-				align={Align::End} 
-				icon={Icon::Play} 
-				variant={Variant::Link} 
-				/>
+
+				<Popover
+				toggle_by_onclick=true
+				target={target}
+				>
+				<div style="width:300%">
+					<img width = "1000" src="img/pricevsgasprice.png" alt="price"/>
 				</div>
+				</Popover>
+
             </>
         }
     }

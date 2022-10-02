@@ -27,7 +27,7 @@ strum = "0.19"
 
 log = "0.4"
 
-#plotly = "0.8.1"
+#plotly = { version = "0.8.1", features = ["kaleido"] }
 
 web-sys = {version = "0.3.56", features = [
   "DataTransfer",

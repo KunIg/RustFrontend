@@ -9,16 +9,32 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 use yew_router::router::Render;
 
-pub struct Model {}
+pub struct Model {
+	not_rendered: bool
+}
+
+pub enum Msg {
+	Clicked,
+}
 
 impl yew::Component for Model {
-    type Message = ();
+    type Message = Msg;
     type Properties = ();
     fn create(_: &Context<Self>) -> Self {
-        Self {}
+        Self {not_rendered : true}
     }
 
-    fn view(&self, _: &Context<Self>) -> Html {
+	fn update(&mut self, _: &Context<Self>, msg: Self::Message) -> bool {
+		match msg {
+            Msg::Clicked => {
+                self.not_rendered = false;
+            },
+            _ => {}
+		}
+        true
+    }
+
+    fn view(&self, ctx: &Context<Self>) -> Html {
 		let drag = Callback::from(move |event: DragEvent| {
 			event.data_transfer().unwrap()
 			.set_data("text", &*event.target().unwrap().unchecked_into::<HtmlDivElement>().id());  
@@ -26,8 +42,7 @@ impl yew::Component for Model {
 
         let sidebar = html_nested! {
             <PageSidebar>
-			<div style="width:75%;">
-
+				<div style="width:75%;">
 				<Title level={Level::H1}>{""}
 					<h1 style="color: white; margin: 14px; padding-left: 10px;">{"Time Range"}</h1>
 				</Title>
@@ -35,25 +50,25 @@ impl yew::Component for Model {
 					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Time - X Days"}
 					<AppLauncher position={Position::Left}>
 						<AppLauncherItem>
-							<div id = "24 Hours" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Time: 24 Hours" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"24 Hours"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							<div id = "30 Days" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Time: 30 Days" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"30 Days"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							<div id = "180 Days" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Time: 180 Days" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"180 Days"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							<div id = "Custom" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Time: Custom" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Custom"}</p>
 							</div>
 						</AppLauncherItem>
@@ -68,19 +83,19 @@ impl yew::Component for Model {
 					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px">{"Top X Senders"}
 					<AppLauncher position={Position::Left}>
 						<AppLauncherItem>
-							<div id = "Top 5" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Senders: Top 5" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Top 5"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							<div id = "Top 10" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Senders: Top 10" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Top 10"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							<div id = "Top 20" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Senders: Top 20" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Top 20"}</p>
 							</div>
 						</AppLauncherItem>
@@ -93,19 +108,19 @@ impl yew::Component for Model {
 					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Top Y Receivers"}
 					<AppLauncher position={Position::Left}>
 						<AppLauncherItem>
-							<div id = "Top 5" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Receivers: Top 5" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Top 5"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							<div id = "Top 10" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Receivers: Top 10" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Top 10"}</p>
 							</div>
 						</AppLauncherItem>
 						<Divider/>
 						<AppLauncherItem>
-							<div id = "Top 20" draggable="true" class="resizable" ondragstart={drag.clone()}>
+							<div id = "Receivers: Top 20" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Top 20"}</p>
 							</div>
 						</AppLauncherItem>
@@ -129,17 +144,15 @@ impl yew::Component for Model {
 					<div id = "Fund Allocator" draggable="true" class="resizable" ondragstart={drag.clone()}>
 						<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Fund Allocator"}</p>
 					</div>
-				</Title>					
-			</div>
+				</Title>	
+				</div>			
             </PageSidebar>
         };
 
         let logo = html_nested! {
-            <Logo src="2MPlus_Logo.svg" alt="Logo" />
+            <Logo src="img/logo.webp" alt="Logo" />
         };
-		let click = Callback::from(|_| {
-			
-		});
+
         html! {
 			<>
 			<BackdropViewer/>
@@ -148,16 +161,26 @@ impl yew::Component for Model {
                 logo={logo}
                 sidebar={sidebar}
                 >
-				<Button label="Add Query" 
-				align={Align::Start} 
-				icon={Icon::PlusCircleIcon} 
-				variant={Variant::Link} 
-				onclick={click.clone()}/>
 				<Flex>
 					<FlexItem>
 					<LayoutItem>
 						<QueryCard/>
-						<div id = "additionalBoxes"></div>
+					</LayoutItem>
+					</FlexItem>
+					<FlexItem>
+					<LayoutItem>
+					<div hidden={self.not_rendered}>
+						<QueryCard/>
+					</div>
+					</LayoutItem>
+					</FlexItem>
+					<FlexItem>
+					<LayoutItem>
+					<Button label="Add Query" 
+					align={Align::Start} 
+					icon={Icon::PlusCircleIcon} 
+					variant={Variant::Link} 
+					onclick={ctx.link().callback(|_| Msg::Clicked)}/>
 					</LayoutItem>
 					</FlexItem>
 				</Flex>
