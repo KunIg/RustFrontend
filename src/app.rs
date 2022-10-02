@@ -33,7 +33,7 @@ impl yew::Component for Model {
 				</Title>
 				<Title level={Level::H4}>{""}
 					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Time - X Days"}
-					<AppLauncher>
+					<AppLauncher position={Position::Left}>
 						<AppLauncherItem>
 							<div id = "24 Hours" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"24 Hours"}</p>
@@ -66,7 +66,7 @@ impl yew::Component for Model {
 				</Title>
 				<Title level={Level::H4}>{""}
 					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px">{"Top X Senders"}
-					<AppLauncher>
+					<AppLauncher position={Position::Left}>
 						<AppLauncherItem>
 							<div id = "Top 5" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Top 5"}</p>
@@ -91,7 +91,7 @@ impl yew::Component for Model {
 
 				<Title level={Level::H4}>{""}
 					<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Top Y Receivers"}
-					<AppLauncher>
+					<AppLauncher position={Position::Left}>
 						<AppLauncherItem>
 							<div id = "Top 5" draggable="true" class="resizable" ondragstart={drag.clone()}>
 								<p>{"Top 5"}</p>
@@ -148,6 +148,11 @@ impl yew::Component for Model {
                 logo={logo}
                 sidebar={sidebar}
                 >
+				<Button label="Add Query" 
+				align={Align::Start} 
+				icon={Icon::PlusCircleIcon} 
+				variant={Variant::Link} 
+				onclick={click.clone()}/>
 				<Flex>
 					<FlexItem>
 					<LayoutItem>
@@ -156,11 +161,6 @@ impl yew::Component for Model {
 					</LayoutItem>
 					</FlexItem>
 				</Flex>
-				<Button label="Add Query" 
-				align={Align::Start} 
-				icon={Icon::PlusCircleIcon} 
-				variant={Variant::Link} 
-				onclick={click.clone()}/>
             </Page>
 			</>
         }

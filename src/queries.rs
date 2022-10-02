@@ -96,10 +96,17 @@ impl Component for TableExample {
 					entries={self.model.clone()}
 				>
 				</Table<SharedTableModel<ExampleEntry>>>
-				<div style = "border-width:3px; border-style:solid; border-color:#FF0000; text-align: center; border-radius: 6px;" class="drop-zone"
+				<div style = "padding: 5px; float: left;border-width:3px; border-style:solid; border-color:#FF0000; text-align: center; border-radius: 6px;" class="drop-zone"
 					ondragover={link.callback(|e| Msg::Dragged(e))}
 					ondrop={link.callback(|e| Msg::Dropped(e))}>
                 	<p>{ "drag queries here" }</p>
+				</div>
+				<div style = "float: right">
+				<Button
+				align={Align::End} 
+				icon={Icon::Play} 
+				variant={Variant::Link} 
+				/>
 				</div>
             </>
         }
