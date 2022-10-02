@@ -107,8 +107,8 @@ impl Component for TableExample {
 				toggle_by_onclick=true
 				target={target}
 				>
-				<div style="width:300%">
-					<img width = "1000" src="img/pricevsgasprice.png" alt="price"/>
+				<div style="width:400%;">
+					<img width = "800" src="img/pricevsgasprice.png" alt="price"/>
 				</div>
 				</Popover>
 

@@ -7,6 +7,9 @@
 /node_modules/
 /pkg
 /dist/
+/frontEnd/dist/
+/frontEnd/node_modules/
+/frontEnd/target
 
 # IntelliJ
 

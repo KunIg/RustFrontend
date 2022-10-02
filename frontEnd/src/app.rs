@@ -130,18 +130,18 @@ impl yew::Component for Model {
 				</Title>
 				
 				<Title level={Level::H4}>{""}
-					<div id = "Total Fees Generated" draggable="true" class="resizable" ondragstart={drag.clone()}>
+					<div style="cursor: pointer" id = "Total Fees Generated" draggable="true" class="resizable" ondragstart={drag.clone()}>
 						<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Total Fees Generated"}</p>
 					</div>
 				</Title>
 
 				<Title level={Level::H4}>{""}
-					<div id = "Total Transactions" draggable="true" class="resizable" ondragstart={drag.clone()}>
+					<div style="cursor: pointer" id = "Total Transactions" draggable="true" class="resizable" ondragstart={drag.clone()}>
 						<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Total Transactions"}</p>
 					</div>
 				</Title>
 				<Title level={Level::H4}>{""}
-					<div id = "Fund Allocator" draggable="true" class="resizable" ondragstart={drag.clone()}>
+					<div style="cursor: pointer" id = "Fund Allocator" draggable="true" class="resizable" ondragstart={drag.clone()}>
 						<p style="text-color: black; margin: 14px; padding-left: 10px; background-color: white; border-radius: 6px;">{"Fund Allocator"}</p>
 					</div>
 				</Title>	
