@@ -1,7 +1,0 @@
-html!(
-    <Form>
-        <FormGroup label="Normal">
-            <TextInput/>
-        </FormGroup>
-    </Form>
-)

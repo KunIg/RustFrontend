@@ -68,7 +68,6 @@ impl Component for TableExample {
 				})
             }
 		}
-
         true
     }
 
@@ -89,6 +88,9 @@ impl Component for TableExample {
 			/>
 			</div>
 		};
+		let title = html! {<>
+            {""}
+        </>};
         html! {
             <>
 				<Table<SharedTableModel<ExampleEntry>>
@@ -107,11 +109,16 @@ impl Component for TableExample {
 				toggle_by_onclick=true
 				target={target}
 				>
-				<div style="width:400%;">
+				<div style="width:350%;">
+				<Card
+				selectable=true
+				selected=true
+				title={title}
+				>
 					<img width = "800" src="img/pricevsgasprice.png" alt="price"/>
+				</Card>
 				</div>
 				</Popover>
-
             </>
         }
     }

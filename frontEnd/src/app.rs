@@ -176,11 +176,11 @@ impl yew::Component for Model {
 					</FlexItem>
 					<FlexItem>
 					<LayoutItem>
-					<Button label="Add Query" 
-					align={Align::Start} 
-					icon={Icon::PlusCircleIcon} 
-					variant={Variant::Link} 
-					onclick={ctx.link().callback(|_| Msg::Clicked)}/>
+						<Button label="Add Query" 
+						align={Align::Start} 
+						icon={Icon::PlusCircleIcon} 
+						variant={Variant::Link} 
+						onclick={ctx.link().callback(|_| Msg::Clicked)}/>
 					</LayoutItem>
 					</FlexItem>
 				</Flex>
